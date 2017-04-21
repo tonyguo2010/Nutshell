@@ -1,2 +1,3 @@
 # Nutshell
-Add some note during the learning
+To note the key and valuable points during learning C#, we created this project.
+
