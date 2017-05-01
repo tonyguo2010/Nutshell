@@ -12,7 +12,8 @@ namespace Nutshell
         {
             //            Generic.Test.TestPassByReference();
             //            Generic.Test.TestPassByValue();
-            Streams.StandardStream.Test();
+            // Streams.StandardStream.Test();
+            Generic.Test.TestInitialization();
         }
     }
 }
