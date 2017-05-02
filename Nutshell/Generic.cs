@@ -74,7 +74,7 @@ namespace Nutshell.Generic
         partial void OutputSomething();
     }
 
-    class Test
+    partial class Test
     {
         public static void TestPassByReference()
         {
@@ -137,7 +137,7 @@ namespace Nutshell.Generic
 
         }
 
-        public static void TestPartial()
+        public static void TestInherit()
         {
             PartialEntity Entity = new PartialEntity();
 
