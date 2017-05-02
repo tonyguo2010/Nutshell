@@ -18,7 +18,63 @@ namespace Nutshell.Generic
         public int Y;
     }
 
-    class Test
+    class InitialEntity
+    {
+        public int iAge { get; set; }
+        public string sName { get; set; }
+        public string sDescription { get; set; }
+        public override string ToString()
+        {
+            return string.Format("iAge : {0}\nsName : {1}\niReadOnly : {2}", iAge, sName, iReadOnly);
+        }
+        public InitialEntity() { iReadOnly = 11; }
+        public InitialEntity(int iAge, string sName, int iReadOnly = 11)
+        {
+            this.iAge = iAge;
+            this.sName = sName;
+            this.iReadOnly = iReadOnly;
+        }
+        public string this [int indexer]
+        {
+            get
+            {
+                string[] NameContent = sDescription.Split();
+                return NameContent[indexer];
+            }
+
+            set
+            {
+                string[] Content = sDescription.Split();
+                Content[indexer] = value;
+                StringBuilder Tmp = new StringBuilder();
+                foreach (string Unit in Content)
+                {
+                    Tmp.Append(Unit).Append(" ");
+                }
+                sDescription = Tmp.ToString();
+            }
+            
+        }
+        private readonly int iReadOnly;
+        private const int iConst = 10;
+        ~InitialEntity()
+        {
+            Console.WriteLine("end...");
+        }
+    }
+
+    partial class PartialEntity
+    {
+        public override string ToString()
+        {
+            OutputSomething();
+            return "Type is " + this.GetType().ToString() + " and " + typeof(PartialEntity).ToString();
+        }
+
+        partial void OutputSomething();
+    }
+
+    partial class Test
     {
         public static void TestAndCompare()
         {
@@ -63,6 +119,34 @@ namespace Nutshell.Generic
             Console.WriteLine("After: \n\tstruct1->({0}, {1}) \n\tstruct2->({2}, {3})\n",
                 struct1.X, struct1.Y,
                 struct2.X, struct2.Y);
+        }
+
+        public static void TestInitialization()
+        {
+            InitialEntity cEntity1 = new InitialEntity { iAge = 9, sName = "Cici", sDescription="Cici was borned in China" };
+            Console.WriteLine(cEntity1.ToString());
+
+            InitialEntity cEntity2 = new InitialEntity(iAge: 3, sName: "Kiki");
+            Console.WriteLine(cEntity2.ToString());
+
+            for (int iLoop = 0; iLoop < cEntity1.sDescription.Split().Length; iLoop++)
+            {
+                Console.WriteLine(cEntity1[iLoop]);
+            }
+
+            cEntity1[3] = "at";
+            Console.WriteLine(cEntity1.sDescription);
+
+            Console.WriteLine("*******\nTry to convert {0} \nand assert {1}\n******",
+                cEntity1 as InitialEntity, cEntity2 is object);
+
+        }
+
+        public static void TestInherit()
+        {
+            PartialEntity Entity = new PartialEntity();
+
+            Console.WriteLine(Entity.ToString());
         }
     }
 }
