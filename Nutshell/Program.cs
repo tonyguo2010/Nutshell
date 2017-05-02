@@ -10,8 +10,7 @@ namespace Nutshell
     {
         static void Main(string[] args)
         {
-            //            Generic.Test.TestPassByReference();
-            //            Generic.Test.TestPassByValue();
+            // Generic.Test.TestAndCompare();
             Streams.StandardStream.Test();
         }
     }

@@ -13,6 +13,25 @@ namespace Nutshell.Streams
         {
             FileStream();
             AsyncFileStream();
+            ReadStream();
+        }
+
+        private static void ReadStream()
+        {
+            string FilePath = AppDomain.CurrentDomain.BaseDirectory;
+            string FileName = Path.Combine(FilePath, "Standard.txt");
+
+            // StreamReader -> TextReader
+            using (TextReader Reader = new StreamReader(FileName))
+            {
+                Console.WriteLine("Output the file {0}", FileName);
+
+                string Content;
+                while ((Content = Reader.ReadLine()) != null)
+                {
+                    Console.WriteLine(Content);
+                }
+            }
         }
 
         public static void FileStream()

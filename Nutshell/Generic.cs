@@ -20,6 +20,11 @@ namespace Nutshell.Generic
 
     class Test
     {
+        public static void TestAndCompare()
+        {
+            TestPassByReference();
+            TestPassByValue();
+        }
         public static void TestPassByReference()
         {
             PassByReference class1 = new PassByReference();
