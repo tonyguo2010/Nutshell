@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Nutshell.Advanced;
 
 namespace Nutshell
 {
@@ -14,7 +15,9 @@ namespace Nutshell
             //            Generic.Test.TestPassByValue();
             // Streams.StandardStream.Test();
             // Generic.Test.TestNewSubMember();
-            Streams.StreamSamples.Test();
+            // Streams.StreamSamples.Test();
+            DelegateExample Tester = new DelegateExample();
+            Tester.Work();
         }
     }
 }

@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Advanced.cs" />
     <Compile Include="GenericAppend.cs" />
     <Compile Include="Generic.cs" />
     <Compile Include="Program.cs" />
